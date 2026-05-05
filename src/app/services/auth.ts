@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
 
-  private apiUrl = 'https://livraison-nourriture-backend.onrender.com';
+  private apiUrl = 'https://livraison-nourriture-backend.onrender.com/api/auth';
 
   constructor(private http: HttpClient) {}
 
@@ -18,7 +18,6 @@ export class AuthService {
     return this.http.post<any>(`${this.apiUrl}/register`, data);
   }
 
-  // 🔥 TOKEN
   saveToken(token: string) {
     localStorage.setItem('token', token);
   }
@@ -27,7 +26,6 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  // 🔥 USER
   saveUser(user: any) {
     localStorage.setItem('user', JSON.stringify(user));
   }
@@ -42,6 +40,6 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token');
-    localStorage.removeItem('user'); 
+    localStorage.removeItem('user');
   }
 }
