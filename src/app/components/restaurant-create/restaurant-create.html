@@ -1,0 +1,14 @@
+<h2>Créer un restaurant</h2>
+
+<label>Nom</label>
+<input type="text" [(ngModel)]="restaurant.name">
+
+<label>Adresse</label>
+<input type="text" [(ngModel)]="restaurant.address">
+
+<label>Catégorie</label>
+<input type="text" [(ngModel)]="restaurant.category">
+
+<br><br>
+
+<button (click)="createRestaurant()">Créer</button>

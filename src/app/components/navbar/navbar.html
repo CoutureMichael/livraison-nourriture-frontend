@@ -1,0 +1,18 @@
+<nav class="navbar">
+  <a routerLink="/restaurants">Restaurants</a>
+  <a routerLink="/orders">Mes commandes</a>
+
+  <!-- 🔥 bouton admin -->
+  <a *ngIf="authService.getUser()?.role === 'admin'" routerLink="/admin/orders">
+    Gestion commandes
+  </a>
+
+  @if (!authService.isLoggedIn()) {
+    <a routerLink="/login">Connexion</a>
+    <a routerLink="/signup">Inscription</a>
+  }
+
+  @if (authService.isLoggedIn()) {
+    <button (click)="logout()">Logout</button>
+  }
+</nav>

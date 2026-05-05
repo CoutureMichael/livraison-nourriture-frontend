@@ -1,0 +1,40 @@
+<h2>Ajouter un item au menu</h2>
+
+<p *ngIf="error" style="color: red;">
+  {{ error }}
+</p>
+
+<form (ngSubmit)="addMenu()">
+  <div>
+    <label>Nom</label>
+    <input
+      type="text"
+      name="name"
+      [(ngModel)]="menu.name"
+      required
+    />
+  </div>
+
+  <div>
+    <label>Description</label>
+    <input
+      type="text"
+      name="description"
+      [(ngModel)]="menu.description"
+    />
+  </div>
+
+  <div>
+    <label>Prix</label>
+    <input
+      type="number"
+      name="price"
+      [(ngModel)]="menu.price"
+      required
+    />
+  </div>
+
+  <button type="submit">
+    Ajouter
+  </button>
+</form>

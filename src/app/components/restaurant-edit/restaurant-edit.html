@@ -1,0 +1,24 @@
+<h2>Modifier restaurant</h2>
+
+<p class="error" *ngIf="error">{{ error }}</p>
+
+<p *ngIf="!restaurant && !error">
+  Chargement...
+</p>
+
+<div *ngIf="restaurant">
+  <label>Nom</label>
+  <input type="text" [(ngModel)]="restaurant.name">
+
+  <label>Adresse</label>
+  <input type="text" [(ngModel)]="restaurant.address">
+
+  <label>Catégorie</label>
+  <input type="text" [(ngModel)]="restaurant.category">
+
+  <br><br>
+
+  <button (click)="updateRestaurant()">
+    Enregistrer
+  </button>
+</div>

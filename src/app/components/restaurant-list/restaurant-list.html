@@ -1,0 +1,35 @@
+<h2>Restaurants</h2>
+
+<button
+  *ngIf="authService.getUser()?.role === 'admin'"
+  routerLink="/restaurants/create">
+  ➕ Ajouter un restaurant
+</button>
+
+<div *ngFor="let restaurant of restaurants" class="card">
+  <h3>{{ restaurant.name }}</h3>
+  <p>{{ restaurant.address }}</p>
+  <p>{{ restaurant.category }}</p>
+
+  <button [routerLink]="['/restaurants', restaurant._id]">
+    Voir détails
+  </button>
+
+  <button
+    *ngIf="authService.getUser()?.role === 'admin'"
+    [routerLink]="['/restaurants/edit', restaurant._id]">
+    ✏️ Modifier
+  </button>
+
+  <button
+  *ngIf="authService.getUser()?.role === 'admin'"
+  [routerLink]="['/restaurants', restaurant._id, 'menu']">
+  🍕 Ajouter menu
+  </button>
+
+  <button
+    *ngIf="authService.getUser()?.role === 'admin'"
+    (click)="deleteRestaurant(restaurant._id)">
+    ❌ Supprimer
+  </button>
+</div>

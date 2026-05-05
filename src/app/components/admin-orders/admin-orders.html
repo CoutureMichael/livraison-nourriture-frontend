@@ -1,0 +1,44 @@
+<h2>Gestion des commandes</h2>
+
+<p *ngIf="loading">Chargement...</p>`
+<p *ngIf="error" style="color: red;">
+  {{ error }}
+</p>
+
+<div *ngFor="let order of orders" class="card">
+  <p><strong>ID :</strong> {{ order._id }}</p>
+
+  <p>
+    <strong>Client :</strong>
+    {{ order.client?.name }} - {{ order.client?.email }}
+  </p>
+
+  <p>
+    <strong>Restaurant :</strong>
+    {{ order.restaurant?.name }}
+  </p>
+
+  <p><strong>Total :</strong> {{ order.total }} $</p>
+
+  <div *ngFor="let item of order.items">
+    <p>{{ item.name }} - {{ item.quantity || 1 }} x {{ item.price }} $</p>
+  </div>
+
+  <label>Statut</label>
+
+  <select [(ngModel)]="order.status">
+    <option *ngFor="let status of statuses" [value]="status.value">
+      {{ status.label }}
+    </option>
+  </select>
+
+  <br><br>
+
+  <button (click)="updateStatus(order)">
+    Modifier
+  </button>
+
+  <button (click)="deleteOrder(order)">
+    Supprimer
+  </button>
+</div>

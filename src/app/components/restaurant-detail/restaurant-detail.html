@@ -1,0 +1,23 @@
+<h2>Détail du restaurant</h2>
+
+<p style="color:red" *ngIf="error">{{ error }}</p>
+
+
+
+<div *ngIf="restaurant">
+  <h3>{{ restaurant.name }}</h3>
+  <p>{{ restaurant.address }}</p>
+  <p>{{ restaurant.category }}</p>
+
+  <h3>Menu</h3>
+
+  <div *ngFor="let item of restaurant.menu" class="card">
+    <h4>{{ item.name }}</h4>
+    <p>{{ item.description }}</p>
+    <p>{{ item.price }} $</p>
+
+    <button (click)="orderItem(item)">Commander</button>
+  </div>
+</div>
+
+<p *ngIf="!restaurant && !error">Chargement du restaurant...</p>

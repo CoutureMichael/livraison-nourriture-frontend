@@ -1,0 +1,15 @@
+<h2>Créer une commande</h2>
+
+<form (ngSubmit)="createOrder()">
+  <label>Total</label>
+  <input
+    type="number"
+    name="total"
+    [(ngModel)]="total"
+    required
+  />
+
+  <button type="submit">
+    Créer la commande
+  </button>
+</form>
