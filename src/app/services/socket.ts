@@ -9,7 +9,7 @@ export class SocketService {
   private socket: Socket;
 
   constructor() {
-    this.socket = io('http://localhost:5000');
+    this.socket = io('https://livraison-nourriture-backend.onrender.com');
   }
 
   onOrderCreated(callback: (order: any) => void) {
